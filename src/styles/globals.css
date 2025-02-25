@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-color: #6366f1;
+  --secondary-color: #a78bfa;
+  --text-color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --text-color: #ddd;
+  }
+}
+
+body {
+  color: var(--text-color);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Suavizado de texto */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Clases personalizadas para Tailwind */
+@layer components {
+  .btn-primary {
+    @apply bg-[--primary-color] text-white py-2 px-4 rounded-lg shadow-md transition hover:bg-[--secondary-color];
+  }
+
+  .btn-secondary {
+    @apply bg-gray-300 text-black py-2 px-4 rounded-lg shadow-md transition hover:bg-gray-400;
+  }
+}
