@@ -1,4 +1,4 @@
-name: CI/CD for Django with Dokku
+name: Deploy
 
 on:
   pull_request:
