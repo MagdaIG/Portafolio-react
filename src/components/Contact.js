@@ -9,7 +9,7 @@ const Contact = () => {
     const [isFlipped, setIsFlipped] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [showModal, setShowModal] = useState(false); // Estado para mostrar el modal
+    const [showModal, setShowModal] = useState(false);
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -39,17 +39,18 @@ const Contact = () => {
 
         setIsSubmitted(true);
         setTimeout(() => {
-            setShowModal(true); // ✅ Muestra el modal de éxito
+            setShowModal(true);
             setIsSubmitted(false);
-            setFormData({ name: '', email: '', message: '' }); // Limpia el formulario
+            setFormData({ name: '', email: '', message: '' });
         }, 800);
     };
 
     return (
-        <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6">
+        <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6 relative">
+            {/* Navbar */}
             <NavBarLeft />
 
-            <div className="flex flex-col items-center justify-center text-center py-16">
+            <div className="flex flex-col items-center justify-center text-center py-16 ml-20">
                 <h2 className={`text-5xl font-bold mb-8 transition-all duration-500 ${
                     isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
                 }`}>
@@ -57,7 +58,7 @@ const Contact = () => {
                 </h2>
 
                 {/*  Contenedor con efecto de giro */}
-                <div className="relative w-[400px] h-[500px] mt-6">
+                <div className="relative w-[400px] h-[500px] mt-6 z-10">
                     <div
                         className={`flip-container ${isFlipped ? 'flipped' : ''}`}
                         onClick={handleFlip}
@@ -118,7 +119,7 @@ const Contact = () => {
                                 </button>
                             </form>
 
-
+                            {/* Redes Sociales */}
                             <div className="flex space-x-6 mt-6 mb-4">
                                 <a href="mailto:magda.inalaf@gmail.com" className="p-4 rounded-lg shadow-lg hover:shadow-purple-500 transition transform hover:scale-110 bg-gray-700">
                                     <FaEnvelope className="text-purple-400 text-xl" />
@@ -137,7 +138,7 @@ const Contact = () => {
 
             {/*  Modal de Confirmación */}
             {showModal && (
-                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center max-w-sm">
                         <FaCheckCircle className="text-green-400 text-5xl mx-auto mb-4" />
                         <p className="text-gray-300 text-lg">Your message has been sent successfully!</p>
@@ -151,9 +152,7 @@ const Contact = () => {
                 </div>
             )}
 
-            <div className="mt-auto">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 };

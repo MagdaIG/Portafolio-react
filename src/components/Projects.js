@@ -80,19 +80,17 @@ const Projects = () => {
             {/* Navbar */}
             <NavBarLeft />
 
-            <div className="flex flex-col items-center text-center py-16 lg:ml-20 relative">
-                {/* 🔹 Título con efecto de parpadeo */}
+            <div className="flex flex-col items-center text-center py-16 ml-20">
                 <h2 className={`text-5xl font-bold mb-10 transition-all duration-500 ${
                     isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
                 }`}>
                     My Projects
                 </h2>
 
-                {/* 🔹 Sección de Proyectos Principales */}
                 <h3 className="text-2xl font-semibold text-white mt-6 mb-4">Main Projects</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {primaryProjects.map((project, index) => (
-                        <div key={index} className="p-5 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500">
+                        <div key={index} className="p-6 bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-purple-500 hover:scale-105 z-10">
                             <div className="relative w-full h-48 rounded-md overflow-hidden">
                                 <Image
                                     src={project.image}
@@ -115,11 +113,10 @@ const Projects = () => {
 
                 <div className="w-full h-px bg-gray-700 my-12"></div>
 
-                {/* 🔹 Sección de Proyectos Secundarios */}
                 <h3 className="text-2xl font-semibold text-white mt-6 mb-4">Some Other Projects</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {secondaryProjects.map((project, index) => (
-                        <div key={index} className="p-5 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500">
+                        <div key={index} className="p-6 bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-purple-500 hover:scale-105 z-10">
                             <div className="relative w-full h-48 rounded-md overflow-hidden">
                                 <Image
                                     src={project.image}
@@ -140,8 +137,7 @@ const Projects = () => {
                     ))}
                 </div>
 
-                {/* 🔹 Sección de GitHub */}
-                <div className="flex flex-col items-center justify-center mt-20 bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto">
+                <div className="flex flex-col items-center justify-center mt-20 bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto z-10">
                     <Image
                         src="/projects/github-profile.png"
                         alt="GitHub Profile"
@@ -161,9 +157,7 @@ const Projects = () => {
                 </div>
             </div>
 
-            <div className="mt-auto">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 };
