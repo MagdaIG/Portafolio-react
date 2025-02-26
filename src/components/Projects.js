@@ -76,21 +76,23 @@ const Projects = () => {
     }, []);
 
     return (
-        <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6">
+        <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6 relative">
+            {/* Navbar */}
             <NavBarLeft />
 
-            <div className="flex flex-col items-center text-center py-12">
-                <h2 className={`text-5xl font-bold mb-8 transition-all duration-500 ${
+            <div className="flex flex-col items-center text-center py-16 lg:ml-20 relative">
+                {/* 🔹 Título con efecto de parpadeo */}
+                <h2 className={`text-5xl font-bold mb-10 transition-all duration-500 ${
                     isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
                 }`}>
                     My Projects
                 </h2>
 
-                {/* Sección de Proyectos Principales */}
+                {/* 🔹 Sección de Proyectos Principales */}
                 <h3 className="text-2xl font-semibold text-white mt-6 mb-4">Main Projects</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {primaryProjects.map((project, index) => (
-                        <div key={index} className="p-5 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500 max-w-[350px] mx-auto">
+                        <div key={index} className="p-5 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500">
                             <div className="relative w-full h-48 rounded-md overflow-hidden">
                                 <Image
                                     src={project.image}
@@ -111,13 +113,13 @@ const Projects = () => {
                     ))}
                 </div>
 
-                <div className="w-full h-px bg-gray-700 my-8"></div>
+                <div className="w-full h-px bg-gray-700 my-12"></div>
 
-                {/*  Sección de Proyectos Secundarios */}
+                {/* 🔹 Sección de Proyectos Secundarios */}
                 <h3 className="text-2xl font-semibold text-white mt-6 mb-4">Some Other Projects</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     {secondaryProjects.map((project, index) => (
-                        <div key={index} className="p-5 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500 max-w-[350px] mx-auto">
+                        <div key={index} className="p-5 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500">
                             <div className="relative w-full h-48 rounded-md overflow-hidden">
                                 <Image
                                     src={project.image}
@@ -137,8 +139,9 @@ const Projects = () => {
                         </div>
                     ))}
                 </div>
-                {/*  Sección de GitHub */}
-                <div className="flex flex-col items-center justify-center mt-16 bg-gray-800 p-6 rounded-lg shadow-lg glow-box">
+
+                {/* 🔹 Sección de GitHub */}
+                <div className="flex flex-col items-center justify-center mt-20 bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto">
                     <Image
                         src="/projects/github-profile.png"
                         alt="GitHub Profile"
@@ -148,8 +151,7 @@ const Projects = () => {
                     />
                     <h3 className="text-2xl font-bold text-purple-400 mt-4">Explore More Projects</h3>
                     <p className="text-gray-300 text-center mt-2 max-w-md">
-                        If you want to explore more repositories with different technologies, feel free to check out my public GitHub repositories!
-                        I have over 40 projects available.
+                        If you want to explore more repositories with different technologies, feel free to check out my public GitHub repositories! I have over 40 projects available.
                     </p>
                     <a href="https://github.com/magdaig" target="_blank" rel="noopener noreferrer"
                        className="mt-4 inline-flex items-center text-white hover:text-secondary transition transform hover:scale-110">
@@ -157,8 +159,7 @@ const Projects = () => {
                         <span className="text-lg">Visit My GitHub</span>
                     </a>
                 </div>
-                </div>
-
+            </div>
 
             <div className="mt-auto">
                 <Footer />

@@ -21,15 +21,14 @@ const AboutMe = () => {
             <NavBarLeft />
 
             {/* Contenido Principal */}
-            <div className="flex flex-col items-center justify-center text-center py-14">
+            <div className="flex flex-col items-center justify-center text-center py-14 lg:ml-20 relative">
                 <h2 className={`text-5xl font-bold mb-4 transition-all duration-500 ${
                     isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
                 }`}>
                     About Me
                 </h2>
 
-
-                <div className="flex flex-col md:flex-row items-center max-w-5xl bg-gray-800 p-8 rounded-xl shadow-xl transition-all duration-300 hover:shadow-purple-500">
+                <div className="flex flex-col md:flex-row items-center max-w-5xl bg-gray-800 p-8 rounded-xl shadow-xl transition-all duration-300 hover:shadow-purple-500 relative z-0">
                     <div className="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg">
                         <ProfileImage />
                     </div>
@@ -60,7 +59,6 @@ const AboutMe = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };
