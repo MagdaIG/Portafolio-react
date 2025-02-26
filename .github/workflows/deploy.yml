@@ -1,0 +1,46 @@
+name: CI/CD for Django with Dokku
+
+on:
+  pull_request:
+    branches:
+      - main   # Run workflow for PRs targeting the `main` branch
+  push:
+    branches:
+      - main   # Deploy to staging on pushes to `main`
+    tags:
+      - 'v*'   # Deploy to production on versioned tags (e.g., v1.0.0)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Step 2: Deploy to Dokku Production
+      - name: Deploy to Dokku Production
+        env:
+          DOKKU_HOST: ${{ secrets.DOKKU_HOST_PRODUCTION }}
+          DOKKU_APP: ${{ secrets.DOKKU_APP_PRODUCTION }}
+          DOKKU_KEY: ${{ secrets.DOKKU_KEY }}
+        run: |
+          # Ensure the .ssh directory exists
+          mkdir -p ~/.ssh
+          
+          # Create or initialize the known_hosts file
+          touch ~/.ssh/known_hosts
+          
+          # Add the Dokku server to the known hosts
+          ssh-keyscan -H $DOKKU_HOST >> ~/.ssh/known_hosts
+          
+          # Add the SSH private key
+          echo "$DOKKU_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          
+          # Add the Dokku remote and deploy
+          git remote add dokku dokku@$DOKKU_HOST:$DOKKU_APP
+          git push -f dokku HEAD:main
