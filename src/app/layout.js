@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-    title: "My 3D Portfolio",
-    description: "Interactive portfolio with 3D animation",
+    title: "Magdalena Inalaf, Software Developer",
+    description: "My animated CV for the world",
 };
 
 export default function RootLayout({ children }) {
