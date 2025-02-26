@@ -1,4 +1,4 @@
-import Avatar3D from '../components/Avatar3D';
+import ClientAvatar3D from '../components/ClientAvatar3D';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -41,7 +41,7 @@ export default function Page() {
 
                 {/* Avatar */}
                 <div className="w-full lg:w-auto flex justify-center">
-                    <Avatar3D/>
+                    <ClientAvatar3D/>
                 </div>
             </div>
 
