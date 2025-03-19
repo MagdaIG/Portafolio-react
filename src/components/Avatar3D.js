@@ -1,60 +1,73 @@
 'use client';
-import { useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, useGLTF } from '@react-three/drei';
+import { useRef, useState, useEffect } from 'react';
+import AvatarActions from './AvatarActions';
 
-const AvatarActions = ({ avatarRef, lightRef }) => {
-  useEffect(() => {
-    if (!avatarRef.current) return;
-
-    const jumpHeight = 0.5;
-    let direction = 1;
-
-    const jump = () => {
-      if (!avatarRef.current) return;
-
-      if (avatarRef.current.position.y >= -1.5 + jumpHeight) {
-        direction = -1;
-      }
-
-      if (avatarRef.current.position.y <= -1.5) {
-        avatarRef.current.position.y = -1.5;
-        return;
-      }
-
-      avatarRef.current.position.y += direction * 0.02;
-    };
-
-    const handleClick = () => {
-      jump();
-    };
-
-    const handleMouseMove = (event) => {
-      if (!avatarRef.current || !lightRef.current) return;
-
-      const { clientX, clientY } = event;
-      const { innerWidth, innerHeight } = window;
-
-
-      const x = (clientX / innerWidth) * 2 - 1;
-      const y = -(clientY / innerHeight) * 2 + 1;
-
-      avatarRef.current.rotation.y = x * 0.5;
-      avatarRef.current.rotation.x = y * 0.2;
-
-      // Mueve la luz siguiendo el cursor
-      lightRef.current.position.x = x * 3;
-      lightRef.current.position.y = y * 2;
-    };
-
-    window.addEventListener('click', handleClick);
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('click', handleClick);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [avatarRef, lightRef]);
-
+const CameraZoom = ({ zoomed }) => {
+  useFrame(({ camera }) => {
+    const targetPosition = zoomed ? [0, 1.5, 3] : [0, 2.2, 6];
+    camera.position.lerp(
+      { x: targetPosition[0], y: targetPosition[1], z: targetPosition[2] },
+      0.1
+    );
+  });
   return null;
 };
 
-export default AvatarActions;
+const Avatar3D = () => {
+  const { scene } = useGLTF('/models/avatar.glb');
+  const avatarRef = useRef(null);
+  const lightRef = useRef(null);
+
+  const [zoomed, setZoomed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  const handleAvatarClick = () => {
+    if (!isMobile) {
+      setZoomed(!zoomed);
+    }
+  };
+
+  return (
+    <div className={`w-full h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden ${isMobile ? 'touch-auto' : 'touch-none'}`}>
+      <Canvas camera={{ position: [0, 2.2, 6], fov: 45 }}>
+        <ambientLight intensity={1.5} />
+        <directionalLight position={[2, 5, 2]} intensity={1.5} />
+        <spotLight ref={lightRef} position={[0, 5, 5]} intensity={2} angle={0.3} penumbra={1} />
+
+        {/* Componente que maneja la animación del zoom */}
+        <CameraZoom zoomed={zoomed} />
+
+        {/* Acciones del Avatar */}
+        <AvatarActions avatarRef={avatarRef} lightRef={lightRef} />
+
+        {/* Avatar con evento onClick para hacer zoom (solo en PC) */}
+        <primitive
+          ref={avatarRef}
+          object={scene}
+          scale={isMobile ? 1.5 : 1.8}
+          position={[0, isMobile ? -3.2 : -2.8, 0]}
+          onClick={handleAvatarClick}
+          className="cursor-pointer"
+        />
+
+        {/* OrbitControls desactivado en móviles */}
+        {!isMobile && <OrbitControls enableZoom={false} />}
+      </Canvas>
+    </div>
+  );
+};
+
+export default Avatar3D;
