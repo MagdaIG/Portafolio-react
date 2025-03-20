@@ -131,7 +131,7 @@ const Contact = () => {
                 {/* ✅ Sección del reCAPTCHA bien alineada */}
                 <div className="flex justify-center my-3">
                   <ReCAPTCHA
-                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                    sitekey="6LerluMqAAAAACgyVmovJ0h0utMLcKUJzReCYgu1"
                     ref={recaptchaRef}
                     size="normal"
                   />
