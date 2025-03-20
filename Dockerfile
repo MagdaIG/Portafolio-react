@@ -1,6 +1,8 @@
 # --- Stage 1: Build the Next.js App ---
 FROM node:20 AS builder
 
+ARG NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+
 # Set working directory inside the container
 WORKDIR /app
 
