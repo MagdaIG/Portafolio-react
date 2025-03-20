@@ -2,7 +2,7 @@
 FROM node:20 AS builder
 
 ARG NEXT_PUBLIC_RECAPTCHA_SITE_KEY
-
+ENV NEXT_PUBLIC_RECAPTCHA_SITE_KEY=${NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
 # Set working directory inside the container
 WORKDIR /app
 
