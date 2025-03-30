@@ -1,9 +1,9 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import ReCAPTCHA from "react-google-recaptcha";
 import { FaEnvelope, FaGithub, FaLinkedin, FaHeart, FaCheckCircle } from 'react-icons/fa';
 import NavBarLeft from '../components/NavBarLeft';
 import Footer from '../components/Footer';
+import Script from 'next/script';
 
 const Contact = () => {
   const [isGlowing, setIsGlowing] = useState(true);
@@ -12,7 +12,7 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const recaptchaRef = useRef(null);
+  const turnstileRef = useRef(null);
   const formRef = useRef(null);
 
   useEffect(() => {
@@ -21,6 +21,23 @@ const Contact = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const initializeTurnstile = () => {
+    if (window.turnstile) {
+      window.turnstile.render('#turnstile-widget', {
+        sitekey: "0x4AAAAAABDI7S7HQ_arXfti",
+        callback: function(token) {
+          turnstileRef.current = token;
+        },
+        'error-callback': function() {
+          console.error('Turnstile error');
+          setErrorMessage("Error al cargar la verificación de seguridad. Por favor, recarga la página.");
+        }
+      });
+    } else {
+      console.error('Turnstile not loaded');
+    }
+  };
 
   const handleFlip = (e) => {
     if (formRef.current && formRef.current.contains(e.target)) {
@@ -42,16 +59,18 @@ const Contact = () => {
       return;
     }
 
+    if (!turnstileRef.current) {
+      setErrorMessage("Please complete the security check.");
+      return;
+    }
+
     setIsSubmitted(true);
 
     try {
-      const token = await recaptchaRef.current.executeAsync();
-      recaptchaRef.current.reset();
-
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, token }),
+        body: JSON.stringify({ ...formData, token: turnstileRef.current }),
       });
 
       const data = await response.json();
@@ -59,8 +78,13 @@ const Contact = () => {
       if (data.success) {
         setShowModal(true);
         setFormData({ name: '', email: '', message: '' });
+        // Reset Turnstile
+        if (window.turnstile) {
+          window.turnstile.reset();
+          turnstileRef.current = null;
+        }
       } else {
-        setErrorMessage("There was an error sending your message. Please try again.");
+        setErrorMessage(data.error || "There was an error sending your message. Please try again.");
         console.error("Error:", data.error);
       }
     } catch (error) {
@@ -73,6 +97,14 @@ const Contact = () => {
 
   return (
     <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6 relative">
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async
+        defer
+        onLoad={() => {
+          initializeTurnstile();
+        }}
+      />
       <NavBarLeft />
       <div className="flex flex-col items-center justify-center text-center py-16 ml-20">
         <h2 className={`text-5xl font-bold mb-8 transition-all duration-500 ${isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"}`}>
@@ -117,25 +149,18 @@ const Contact = () => {
                   />
                 </div>
                 <div className="mb-4">
-                                    <textarea
-                                      name="message"
-                                      placeholder="Message"
-                                      className="w-full p-3 rounded bg-gray-700 text-white"
-                                      rows="3"
-                                      value={formData.message}
-                                      onChange={handleChange}
-                                      required
-                                    ></textarea>
+                  <textarea
+                    name="message"
+                    placeholder="Message"
+                    className="w-full p-3 rounded bg-gray-700 text-white"
+                    rows="3"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                  ></textarea>
                 </div>
 
-                {/* ✅ Sección del reCAPTCHA bien alineada */}
-                <div className="flex justify-center my-3">
-                  <ReCAPTCHA
-                    sitekey="6LerluMqAAAAACgyVmovJ0h0utMLcKUJzReCYgu1"
-                    ref={recaptchaRef}
-                    size="normal"
-                  />
-                </div>
+                <div id="turnstile-widget" className="flex justify-center my-3 min-h-[65px] rounded p-2"></div>
 
                 <button type="submit" className="btn-primary w-full py-3 text-lg" disabled={isSubmitted}>
                   {isSubmitted ? "Sending..." : "Send Message"}
@@ -146,7 +171,6 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* ✅ Modal de confirmación */}
       {showModal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center max-w-sm">
