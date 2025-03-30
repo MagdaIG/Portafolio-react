@@ -1,13 +1,11 @@
 import ClientAvatar3D from '../components/ClientAvatar3D';
 import NavBar from '../components/NavBar';
-import NavBarLeft from '../components/NavBarLeft';
 import Footer from '../components/Footer';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Page() {
     return (
         <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
-            <NavBarLeft />
             <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
                 <div className="max-w-4xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 mt-8">

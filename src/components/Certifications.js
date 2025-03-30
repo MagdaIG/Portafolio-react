@@ -54,7 +54,7 @@ const Certifications = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+        <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden pt-14">
             <NavBarLeft />
             <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
                 <div className="max-w-4xl mx-auto">

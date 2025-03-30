@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import CustomCursor from "../components/CustomCursor";
 import { GoogleTagManager } from '@next/third-parties/google'
+import NavBarLeft from '../components/NavBarLeft';
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -23,8 +24,11 @@ export default function RootLayout({ children }) {
         <html lang="en" className="h-full">
         <GoogleTagManager gaId="G-ER9LCZNFE2" />
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-[--background] text-[--text-color] relative`}>
-        {children}
-        <CustomCursor /> {/* 🔹 Cursor en todas las páginas */}
+            <NavBarLeft />
+            <main>
+                {children}
+            </main>
+            <CustomCursor /> {/* 🔹 Cursor en todas las páginas */}
         </body>
         </html>
     );

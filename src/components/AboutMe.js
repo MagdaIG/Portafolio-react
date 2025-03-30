@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import NavBarLeft from '../components/NavBarLeft';
 import Footer from '../components/Footer';
 import ProfileImage from '../components/ProfileImage';
 
@@ -17,8 +16,6 @@ const AboutMe = () => {
 
     return (
         <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6 relative">
-            <NavBarLeft />
-
             <div className="flex flex-col items-center justify-center text-center py-14">
                 <h2 className={`text-5xl font-bold mb-4 transition-all duration-500 ${
                     isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
@@ -43,7 +40,7 @@ const AboutMe = () => {
                             and system analysis training with the pedagogical tools I acquired.
                             I hope to merge both worlds, contributing to the development of teams
                             and projects with a human-centered, innovative, and strategic approach.
-                            Teaching is not just a passion; it’s a way to amplify the impact of my
+                            Teaching is not just a passion; it's a way to amplify the impact of my
                             work and create meaningful change.
                         </p>
                     </div>

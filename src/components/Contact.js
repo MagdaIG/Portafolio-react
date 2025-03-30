@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { FaEnvelope, FaGithub, FaLinkedin, FaHeart, FaCheckCircle } from 'react-icons/fa';
-import NavBarLeft from './NavBarLeft';
 import Footer from './Footer';
 import Script from 'next/script';
 
@@ -96,7 +95,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden pt-14">
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
         async
@@ -105,7 +104,6 @@ const Contact = () => {
           initializeTurnstile();
         }}
       />
-      <NavBarLeft />
       <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
         <div className="max-w-4xl mx-auto">
           <h2 className={`text-3xl md:text-5xl font-bold mb-8 text-center transition-all duration-500 ${

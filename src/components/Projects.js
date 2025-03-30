@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import NavBarLeft from './NavBarLeft';
 import Footer from './Footer';
 
 const primaryProjects = [
@@ -76,8 +75,7 @@ const Projects = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
-            <NavBarLeft />
+        <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden pt-14">
             <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
                 <div className="max-w-4xl mx-auto">
                     <h2 className={`text-4xl md:text-5xl font-bold mb-8 text-center transition-all duration-500 ${
