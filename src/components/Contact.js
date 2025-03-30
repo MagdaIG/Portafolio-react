@@ -113,59 +113,59 @@ const Contact = () => {
           </h2>
 
           <div className="flex justify-center px-4 md:px-0">
-            <div className="w-full max-w-[400px] relative md:h-[550px]">
+            <div className="w-full max-w-[400px] relative h-[550px]">
               <div className={`flip-container absolute w-full h-full ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
-                <div className="front absolute w-full h-full flex flex-col items-center justify-center rounded-xl shadow-lg bg-gray-800 p-6 md:p-8 border-l-4 border-purple-500">
-                  <FaHeart className="text-purple-400 text-6xl md:text-8xl cursor-pointer animate-pulse" />
-                  <p className="text-gray-400 text-lg md:text-xl mt-4 md:mt-6">Touch Me!</p>
+                <div className="front absolute w-full h-full flex flex-col items-center justify-center rounded-xl shadow-lg bg-gray-800 p-8 border-l-4 border-purple-500">
+                  <FaHeart className="text-purple-400 text-8xl cursor-pointer animate-pulse" />
+                  <p className="text-gray-400 text-xl mt-6">Touch Me!</p>
                 </div>
 
-                <div className="back absolute w-full h-full bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg flex flex-col border-l-4 border-purple-500" ref={formRef}>
-                  <p className="text-gray-400 text-sm md:text-base text-center mb-4 md:mb-6">
+                <div className="back absolute w-full h-full bg-gray-800 p-8 rounded-xl shadow-lg flex flex-col border-l-4 border-purple-500" ref={formRef}>
+                  <p className="text-gray-400 text-base text-center mb-6">
                     If you have any questions, suggestions, or collaboration ideas, feel free to reach out!
                   </p>
 
-                  {errorMessage && <p className="text-red-400 text-xs md:text-sm mb-3 md:mb-4">{errorMessage}</p>}
+                  {errorMessage && <p className="text-red-400 text-sm mb-4">{errorMessage}</p>}
 
                   <form className="w-full flex-grow flex flex-col" onSubmit={handleSubmit}>
-                    <div className="mb-3 md:mb-4">
+                    <div className="mb-4">
                       <input
                         type="text"
                         name="name"
                         placeholder="Your Name"
-                        className="w-full p-2.5 md:p-3 rounded bg-gray-700 text-white text-sm md:text-base"
+                        className="w-full p-3 rounded bg-gray-700 text-white text-base"
                         value={formData.name}
                         onChange={handleChange}
                         required
                       />
                     </div>
-                    <div className="mb-3 md:mb-4">
+                    <div className="mb-4">
                       <input
                         type="email"
                         name="email"
                         placeholder="Your Email"
-                        className="w-full p-2.5 md:p-3 rounded bg-gray-700 text-white text-sm md:text-base"
+                        className="w-full p-3 rounded bg-gray-700 text-white text-base"
                         value={formData.email}
                         onChange={handleChange}
                         required
                       />
                     </div>
-                    <div className="mb-3 md:mb-4">
+                    <div className="mb-4 flex-grow">
                       <textarea
                         name="message"
                         placeholder="Message"
-                        className="w-full h-[120px] md:h-full min-h-[100px] p-2.5 md:p-3 rounded bg-gray-700 text-white text-sm md:text-base"
+                        className="w-full h-full min-h-[100px] p-3 rounded bg-gray-700 text-white text-base"
                         value={formData.message}
                         onChange={handleChange}
                         required
                       ></textarea>
                     </div>
 
-                    <div id="turnstile-widget" className="flex justify-center mb-2 min-h-[40px] rounded"></div>
+                    <div id="turnstile-widget" className="flex justify-center mb-4 min-h-[40px] rounded"></div>
 
                     <button
                       type="submit"
-                      className="w-full py-2.5 md:py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition duration-300 text-sm md:text-lg"
+                      className="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition duration-300 text-lg"
                       disabled={isSubmitted}
                     >
                       {isSubmitted ? "Sending..." : "Send Message"}
@@ -180,12 +180,12 @@ const Contact = () => {
 
       {showModal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-          <div className="bg-gray-800 p-5 md:p-6 rounded-xl shadow-lg text-center w-full max-w-sm border-l-4 border-purple-500">
-            <FaCheckCircle className="text-green-400 text-4xl md:text-5xl mx-auto mb-3 md:mb-4" />
-            <p className="text-gray-300 text-base md:text-lg">Your message has been sent successfully!</p>
+          <div className="bg-gray-800 p-6 rounded-xl shadow-lg text-center w-full max-w-sm border-l-4 border-purple-500">
+            <FaCheckCircle className="text-green-400 text-5xl mx-auto mb-4" />
+            <p className="text-gray-300 text-lg">Your message has been sent successfully!</p>
             <button
               onClick={() => setShowModal(false)}
-              className="w-full mt-3 md:mt-4 py-2.5 md:py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition duration-300 text-sm md:text-lg"
+              className="w-full mt-4 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition duration-300 text-lg"
             >
               OK
             </button>
