@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import NavBarLeft from '../components/NavBarLeft';
-import Footer from '../components/Footer';
+import NavBarLeft from './NavBarLeft';
+import Footer from './Footer';
 import { FaHtml5, FaCss3Alt, FaBootstrap, FaJs, FaPhp, FaLaravel, FaJava, FaDatabase, FaVuejs, FaGithub, FaFigma } from 'react-icons/fa';
 import { SiNestjs, SiSpringboot, SiJquery, SiNextdotjs, SiPostgresql, SiIonic } from 'react-icons/si';
 
@@ -30,57 +30,48 @@ const Skills = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setIsGlowing((prev) => !prev);
-        }, 1200); // ⏳ Cambia cada 1.2 segundos
-
+        }, 1200);
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6 relative">
-            {/* Navbar lateral */}
+        <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
             <NavBarLeft />
+            <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className={`text-5xl font-bold mb-8 text-center transition-all duration-500 ${
+                        isGlowing ? "text-purple-400" : "text-gray-600"
+                    }`}>
+                        Technical Skills
+                    </h2>
 
-            <div className="flex flex-col items-center justify-center text-center py-14">
-                <h2 className={`text-5xl font-bold mb-4 transition-all duration-500 ${
-                    isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
-                }`}>
-                    Technical Skills
-                </h2>
+                    <p className="text-lg text-gray-400 mb-16 text-center max-w-3xl mx-auto">
+                        Explore the tools and technologies I have worked with, from those I master to those I have explored.
+                        Some I have learned independently, driven by my curiosity and passion for development;
+                        others through academic training or as part of challenging projects.
+                        Each of these experiences has enriched my skills and helped me create functional and innovative projects.
+                        I am committed to continuous improvement and exploring new technologies to expand my impact and professional growth.
+                    </p>
 
-                <p className="max-w-3xl text-lg text-gray-400 mt-2 leading-relaxed">
-                    Explore the tools and technologies I have worked with, from those I master to those I have explored.
-                    Some I have learned independently, driven by my curiosity and passion for development;
-                    others through academic training or as part of challenging projects.
-                    Each of these experiences has enriched my skills and helped me create functional and innovative projects.
-                    I am committed to continuous improvement and exploring new technologies to expand my impact and professional growth.
-                </p>
-
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
-                    {skillsData.map((skill, index) => (
-                        <div
-                            key={index}
-                            className={`relative flex flex-col items-center justify-center p-6 bg-gray-800 rounded-xl shadow-lg transition-all duration-300 ${
-                                isGlowing ? "shadow-purple-500" : "shadow-gray-900"
-                            } hover:scale-105`}
-                            style={{ borderBottom: `4px solid ${skill.color}` }}
-                        >
-                            <div className="text-gray-400 text-5xl transition-all duration-500 hover:text-[--primary-color]">
-                                {skill.icon}
+                    <div className="grid grid-cols-4 gap-6">
+                        {skillsData.map((skill, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-800/50 rounded-lg p-6 flex flex-col items-center"
+                                style={{ borderBottom: `3px solid ${skill.color}` }}
+                            >
+                                <div className="text-4xl text-gray-400 mb-3">
+                                    {skill.icon}
+                                </div>
+                                <p className="text-gray-400 text-sm font-medium">
+                                    {skill.name}
+                                </p>
                             </div>
-
-                            <p className={`text-lg font-semibold mt-2 transition-all duration-500 ${
-                                isGlowing ? "text-white" : "text-gray-600"
-                            }`}>
-                                {skill.name}
-                            </p>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
-
-            <div className="mt-10">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 };

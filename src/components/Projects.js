@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import NavBarLeft from '../components/NavBarLeft';
-import Footer from '../components/Footer';
+import NavBarLeft from './NavBarLeft';
+import Footer from './Footer';
 
 const primaryProjects = [
     {
@@ -76,87 +76,90 @@ const Projects = () => {
     }, []);
 
     return (
-        <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6 relative">
-            {/* Navbar */}
+        <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
             <NavBarLeft />
+            <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className={`text-4xl md:text-5xl font-bold mb-8 text-center transition-all duration-500 ${
+                        isGlowing ? "text-purple-400" : "text-gray-600"
+                    }`}>
+                        My Projects
+                    </h2>
 
-            <div className="flex flex-col items-center text-center py-16 ml-20">
-                <h2 className={`text-5xl font-bold mb-10 transition-all duration-500 ${
-                    isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
-                }`}>
-                    My Projects
-                </h2>
-
-                <h3 className="text-2xl font-semibold text-white mt-6 mb-4">Main Projects</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    {primaryProjects.map((project, index) => (
-                        <div key={index} className="p-6 bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-purple-500 hover:scale-105 z-10">
-                            <div className="relative w-full h-48 rounded-md overflow-hidden">
-                                <Image
-                                    src={project.image}
-                                    alt={project.name}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="hover:opacity-90 transition duration-300"
-                                />
+                    <h3 className="text-2xl font-semibold text-white mb-8 text-center">Main Projects</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                        {primaryProjects.map((project, index) => (
+                            <div key={index} className="p-6 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500 border-l-4 border-purple-500">
+                                <div className="relative w-full h-48 rounded-md overflow-hidden">
+                                    <Image
+                                        src={project.image}
+                                        alt={project.name}
+                                        layout="fill"
+                                        objectFit="cover"
+                                        className="hover:opacity-90 transition duration-300"
+                                    />
+                                </div>
+                                <h3 className="text-xl font-semibold text-purple-400 mt-4">{project.name}</h3>
+                                <p className="text-gray-300 mt-2 text-sm leading-relaxed">{project.description}</p>
+                                <a href={project.link} target="_blank" rel="noopener noreferrer"
+                                   className="mt-4 inline-flex items-center text-white hover:text-purple-400 transition transform hover:scale-110">
+                                    <FaExternalLinkAlt className="text-lg mr-2" />
+                                    <span className="text-sm">Live View</span>
+                                </a>
                             </div>
-                            <h3 className="text-lg font-semibold text-purple-400 mt-4">{project.name}</h3>
-                            <p className="text-gray-300 mt-2 text-sm leading-relaxed">{project.description}</p>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer"
-                               className="mt-3 inline-flex items-center text-white hover:text-secondary transition transform hover:scale-110">
-                                <FaExternalLinkAlt className="text-lg mr-1" />
-                                <span className="text-sm">Live View</span>
+                        ))}
+                    </div>
+
+                    <div className="w-full h-px bg-gray-700 my-12"></div>
+
+                    <h3 className="text-2xl font-semibold text-white mb-8 text-center">Some Other Projects</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                        {secondaryProjects.map((project, index) => (
+                            <div key={index} className="p-6 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500 border-l-4 border-purple-500">
+                                <div className="relative w-full h-48 rounded-md overflow-hidden">
+                                    <Image
+                                        src={project.image}
+                                        alt={project.name}
+                                        layout="fill"
+                                        objectFit="cover"
+                                        className="hover:opacity-90 transition duration-300"
+                                    />
+                                </div>
+                                <h3 className="text-xl font-semibold text-purple-400 mt-4">{project.name}</h3>
+                                <p className="text-gray-300 mt-2 text-sm leading-relaxed">{project.description}</p>
+                                <a href={project.link} target="_blank" rel="noopener noreferrer"
+                                   className="mt-4 inline-flex items-center text-white hover:text-purple-400 transition transform hover:scale-110">
+                                    <FaExternalLinkAlt className="text-lg mr-2" />
+                                    <span className="text-sm">Live View</span>
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="bg-gray-800 p-8 rounded-xl shadow-lg max-w-lg mx-auto border-l-4 border-purple-500">
+                        <div className="flex justify-center">
+                            <Image
+                                src="/projects/github-profile.png"
+                                alt="GitHub Profile"
+                                width={150}
+                                height={150}
+                                className="rounded-md"
+                            />
+                        </div>
+                        <h3 className="text-2xl font-bold text-purple-400 mt-4 text-center">Explore More Projects</h3>
+                        <p className="text-gray-300 text-center mt-3">
+                            If you want to explore more repositories with different technologies, feel free to check out my public GitHub repositories! I have over 40 projects available.
+                        </p>
+                        <div className="flex justify-center mt-4">
+                            <a href="https://github.com/magdaig" target="_blank" rel="noopener noreferrer"
+                               className="inline-flex items-center text-white hover:text-purple-400 transition transform hover:scale-110">
+                                <FaGithub className="text-2xl mr-2" />
+                                <span>Visit My GitHub</span>
                             </a>
                         </div>
-                    ))}
-                </div>
-
-                <div className="w-full h-px bg-gray-700 my-12"></div>
-
-                <h3 className="text-2xl font-semibold text-white mt-6 mb-4">Some Other Projects</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    {secondaryProjects.map((project, index) => (
-                        <div key={index} className="p-6 bg-gray-800 rounded-xl shadow-lg transition-all duration-300 hover:shadow-purple-500 hover:scale-105 z-10">
-                            <div className="relative w-full h-48 rounded-md overflow-hidden">
-                                <Image
-                                    src={project.image}
-                                    alt={project.name}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="hover:opacity-90 transition duration-300"
-                                />
-                            </div>
-                            <h3 className="text-lg font-semibold text-purple-400 mt-4">{project.name}</h3>
-                            <p className="text-gray-300 mt-2 text-sm leading-relaxed">{project.description}</p>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer"
-                               className="mt-3 inline-flex items-center text-white hover:text-secondary transition transform hover:scale-110">
-                                <FaExternalLinkAlt className="text-lg mr-1" />
-                                <span className="text-sm">Live View</span>
-                            </a>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="flex flex-col items-center justify-center mt-20 bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto z-10">
-                    <Image
-                        src="/projects/github-profile.png"
-                        alt="GitHub Profile"
-                        width={200}
-                        height={200}
-                        className="rounded-md"
-                    />
-                    <h3 className="text-2xl font-bold text-purple-400 mt-4">Explore More Projects</h3>
-                    <p className="text-gray-300 text-center mt-2 max-w-md">
-                        If you want to explore more repositories with different technologies, feel free to check out my public GitHub repositories! I have over 40 projects available.
-                    </p>
-                    <a href="https://github.com/magdaig" target="_blank" rel="noopener noreferrer"
-                       className="mt-4 inline-flex items-center text-white hover:text-secondary transition transform hover:scale-110">
-                        <FaGithub className="text-3xl mr-2" />
-                        <span className="text-lg">Visit My GitHub</span>
-                    </a>
+                    </div>
                 </div>
             </div>
-
             <Footer />
         </div>
     );

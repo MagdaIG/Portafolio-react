@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import NavBarLeft from '../components/NavBarLeft';
-import Footer from '../components/Footer';
+import NavBarLeft from './NavBarLeft';
+import Footer from './Footer';
 
 const educationData = [
     {
@@ -37,34 +37,35 @@ const Education = () => {
     }, []);
 
     return (
-        <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6 relative">
+        <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
             <NavBarLeft />
+            <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className={`text-4xl md:text-5xl font-bold mb-8 text-center transition-all duration-500 ${
+                        isGlowing ? "text-purple-400" : "text-gray-600"
+                    }`}>
+                        Education
+                    </h2>
 
-            {/* 🔹 Sección Principal */}
-            <div className="flex flex-col items-center justify-center text-center py-16 ml-20">
-                <h2 className={`text-5xl font-bold mb-6 transition-all duration-500 ${
-                    isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
-                }`}>
-                    Education
-                </h2>
+                    <p className="text-lg text-gray-400 mb-12 text-center max-w-3xl mx-auto">
+                        My educational background reflects my passion for learning and expanding my knowledge
+                        in programming, systems analysis, and education.
+                    </p>
 
-                <p className="max-w-3xl text-lg text-gray-400 mt-2 leading-relaxed">
-                    My educational background reflects my passion for learning and expanding my knowledge
-                    in programming, systems analysis, and education.
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 w-full max-w-5xl">
-                    {educationData.map((edu, index) => (
-                        <div key={index} className="p-6 bg-gray-800 rounded-xl shadow-lg transition-all duration-300
-                            hover:shadow-purple-500 hover:scale-105 z-10">
-                            <h3 className="text-xl font-bold text-purple-400">{edu.degree}</h3>
-                            <p className="text-gray-300">{edu.institution}</p>
-                            <p className="text-gray-400">{edu.date}</p>
-                        </div>
-                    ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {educationData.map((edu, index) => (
+                            <div
+                                key={index}
+                                className="p-6 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500 border-l-4 border-purple-500"
+                            >
+                                <h3 className="text-xl font-bold text-purple-400">{edu.degree}</h3>
+                                <p className="text-gray-300 mt-2">{edu.institution}</p>
+                                <p className="text-gray-400 mt-1">{edu.date}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-
             <Footer />
         </div>
     );

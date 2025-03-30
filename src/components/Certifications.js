@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { FaArrowDown } from 'react-icons/fa';
-import NavBarLeft from '../components/NavBarLeft';
-import Footer from '../components/Footer';
+import NavBarLeft from './NavBarLeft';
+import Footer from './Footer';
 
 const certificationsData = [
     {
@@ -54,39 +54,37 @@ const Certifications = () => {
     }, []);
 
     return (
-        <div className="w-screen min-h-screen flex flex-col bg-gray-900 text-white px-6">
+        <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
             <NavBarLeft />
+            <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className={`text-4xl md:text-5xl font-bold mb-8 text-center transition-all duration-500 ${
+                        isGlowing ? "text-purple-400" : "text-gray-600"
+                    }`}>
+                        Certifications
+                    </h2>
 
-            <div className="flex flex-col items-center justify-center text-center py-12">
-                <h2 className={`text-5xl font-bold mb-8 transition-all duration-500 ${
-                    isGlowing ? "text-purple-400 shadow-lg" : "text-gray-600"
-                }`}>
-                    Certifications
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                    {certificationsData.map((cert, index) => (
-                        <div
-                            key={index}
-                            className={`p-5 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500 max-w-[350px] mx-auto
-                                ${certificationsData.length % 2 !== 0 && index === certificationsData.length - 1 ? "lg:col-span-3 text-center" : ""}`
-                            }
-                        >
-                            <h3 className="text-lg font-semibold text-purple-400">{cert.name}</h3>
-                            <p className="text-gray-300 mt-2 text-sm leading-relaxed">{cert.description}</p>
-                            <a href={cert.file} target="_blank" rel="noopener noreferrer"
-                               className="mt-3 inline-flex items-center text-white hover:text-secondary transition transform hover:scale-110">
-                                <FaArrowDown className="text-lg mr-1" />
-                                <span className="text-sm">View Certificate</span>
-                            </a>
-                        </div>
-                    ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                        {certificationsData.map((cert, index) => (
+                            <div
+                                key={index}
+                                className={`p-4 md:p-6 bg-gray-800 rounded-xl shadow-lg transition transform hover:scale-105 hover:shadow-purple-500 border-l-4 border-purple-500
+                                    ${certificationsData.length % 3 !== 0 && index === certificationsData.length - 1 ? "lg:col-span-3 max-w-lg mx-auto" : ""}`
+                                }
+                            >
+                                <h3 className="text-lg md:text-xl font-semibold text-purple-400">{cert.name}</h3>
+                                <p className="text-gray-300 mt-2 md:mt-3 text-sm leading-relaxed">{cert.description}</p>
+                                <a href={cert.file} target="_blank" rel="noopener noreferrer"
+                                   className="mt-3 md:mt-4 inline-flex items-center text-white hover:text-purple-400 transition transform hover:scale-110">
+                                    <FaArrowDown className="text-lg mr-2" />
+                                    <span className="text-sm">View Certificate</span>
+                                </a>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-
-            <div className="mt-auto">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 };
