@@ -113,7 +113,7 @@ const Contact = () => {
           </h2>
 
           <div className="flex justify-center px-4 md:px-0">
-            <div className="w-full max-w-[400px] relative h-[600px] md:h-[550px]">
+            <div className="w-full max-w-[400px] relative md:h-[550px]">
               <div className={`flip-container absolute w-full h-full ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
                 <div className="front absolute w-full h-full flex flex-col items-center justify-center rounded-xl shadow-lg bg-gray-800 p-6 md:p-8 border-l-4 border-purple-500">
                   <FaHeart className="text-purple-400 text-6xl md:text-8xl cursor-pointer animate-pulse" />
@@ -150,7 +150,7 @@ const Contact = () => {
                         required
                       />
                     </div>
-                    <div className="mb-3 md:mb-4 flex-grow">
+                    <div className="mb-3 md:mb-4">
                       <textarea
                         name="message"
                         placeholder="Message"
@@ -161,7 +161,7 @@ const Contact = () => {
                       ></textarea>
                     </div>
 
-                    <div id="turnstile-widget" className="flex justify-center mb-3 md:mb-4 min-h-[65px] rounded"></div>
+                    <div id="turnstile-widget" className="flex justify-center mb-2 min-h-[40px] rounded"></div>
 
                     <button
                       type="submit"
