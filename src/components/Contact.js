@@ -175,7 +175,7 @@ const Contact = () => {
 
             <div className="space-y-6">
               <a
-                href="mailto:magdalena.inalaf@gmail.com"
+                href="mailto:magda@inalaf.ca"
                 className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 group"
               >
                 <div className="p-3 bg-blue-600 rounded-lg group-hover:bg-blue-700 transition-colors duration-300">
@@ -183,12 +183,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">Email</h3>
-                  <p className="text-gray-300">magdalena.inalaf@gmail.com</p>
+                  <p className="text-gray-300">magda@inalaf.ca</p>
                 </div>
               </a>
 
               <a
-                href="https://github.com/magdalena-inalaf"
+                href="https://github.com/magdaig"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 group"
@@ -198,12 +198,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">GitHub</h3>
-                  <p className="text-gray-300">@magdalena-inalaf</p>
+                  <p className="text-gray-300">@magdaig</p>
                 </div>
               </a>
 
               <a
-                href="https://linkedin.com/in/magdalena-inalaf"
+                href="https://linkedin.com/in/minalaf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 group"
@@ -213,7 +213,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">LinkedIn</h3>
-                  <p className="text-gray-300">magdalena-inalaf</p>
+                  <p className="text-gray-300">minalaf</p>
                 </div>
               </a>
             </div>
