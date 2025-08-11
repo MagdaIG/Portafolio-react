@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { FaEnvelope, FaGithub, FaLinkedin, FaHeart, FaCheckCircle } from 'react-icons/fa';
 import Footer from './Footer';
-import Script from 'next/script';
 
 const Contact = () => {
   const [isGlowing, setIsGlowing] = useState(true);
@@ -11,7 +10,6 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const turnstileRef = useRef(null);
   const formRef = useRef(null);
 
   useEffect(() => {
@@ -20,23 +18,6 @@ const Contact = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  const initializeTurnstile = () => {
-    if (window.turnstile) {
-      window.turnstile.render('#turnstile-widget', {
-        sitekey: "0x4AAAAAABDI7S7HQ_arXfti",
-        callback: function(token) {
-          turnstileRef.current = token;
-        },
-        'error-callback': function() {
-          console.error('Turnstile error');
-          setErrorMessage("Error al cargar la verificación de seguridad. Por favor, recarga la página.");
-        }
-      });
-    } else {
-      console.error('Turnstile not loaded');
-    }
-  };
 
   const handleFlip = (e) => {
     if (formRef.current && formRef.current.contains(e.target)) {
@@ -58,33 +39,22 @@ const Contact = () => {
       return;
     }
 
-    if (!turnstileRef.current) {
-      setErrorMessage("Please complete the security check.");
-      return;
-    }
-
     setIsSubmitted(true);
 
     try {
-      const response = await fetch('/api/contact', {
+      // Using Formspree for static form handling
+      // Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree endpoint
+      const response = await fetch('https://formspree.io/f/manbvygz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, token: turnstileRef.current }),
+        body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
-      if (data.success) {
+      if (response.ok) {
         setShowModal(true);
         setFormData({ name: '', email: '', message: '' });
-        // Reset Turnstile
-        if (window.turnstile) {
-          window.turnstile.reset();
-          turnstileRef.current = null;
-        }
       } else {
-        setErrorMessage(data.error || "There was an error sending your message. Please try again.");
-        console.error("Error:", data.error);
+        setErrorMessage("There was an error sending your message. Please try again.");
       }
     } catch (error) {
       setErrorMessage("Server Error. Please try again later.");
@@ -96,98 +66,177 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden pt-14">
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        async
-        defer
-        onLoad={() => {
-          initializeTurnstile();
-        }}
-      />
-      <div className="p-4 lg:p-12 mb-20 transition-all duration-300 md:translate-x-32">
-        <div className="max-w-4xl mx-auto">
-          <h2 className={`text-3xl md:text-5xl font-bold mb-8 text-center transition-all duration-500 ${
-            isGlowing ? "text-purple-400" : "text-gray-600"
-          }`}>
-            Get in Touch
-          </h2>
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+            Let's Connect
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            I'm always interested in new opportunities and collaborations. 
+            Feel free to reach out!
+          </p>
+        </div>
 
-          <div className="flex justify-center px-4 md:px-0">
-            <div className="w-full max-w-[400px] relative h-[550px]">
-              <div className={`flip-container absolute w-full h-full ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
-                <div className="front absolute w-full h-full flex flex-col items-center justify-center rounded-xl shadow-lg bg-gray-800 p-8 border-l-4 border-purple-500">
-                  <FaHeart className="text-purple-400 text-8xl cursor-pointer animate-pulse" />
-                  <p className="text-gray-400 text-xl mt-6">Touch Me!</p>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          {/* Contact Form */}
+          <div className="relative">
+            <div 
+              ref={formRef}
+              className={`bg-gray-800 rounded-2xl p-8 shadow-2xl transition-all duration-500 transform ${
+                isFlipped ? 'rotate-y-180' : ''
+              }`}
+              style={{
+                background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.9))',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(59, 130, 246, 0.2)'
+              }}
+            >
+              <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                Send Message
+              </h2>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
+                    placeholder="Your name"
+                    required
+                  />
                 </div>
 
-                <div className="back absolute w-full h-full bg-gray-800 p-8 rounded-xl shadow-lg flex flex-col border-l-4 border-purple-500" ref={formRef}>
-                  <p className="text-gray-400 text-base text-center mb-6">
-                    If you have any questions, suggestions, or collaboration ideas, feel free to reach out!
-                  </p>
-
-                  {errorMessage && <p className="text-red-400 text-sm mb-4">{errorMessage}</p>}
-
-                  <form className="w-full flex-grow flex flex-col" onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        className="w-full p-3 rounded bg-gray-700 text-white text-base"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder="Your Email"
-                        className="w-full p-3 rounded bg-gray-700 text-white text-base"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="mb-4 flex-grow">
-                      <textarea
-                        name="message"
-                        placeholder="Message"
-                        className="w-full h-full min-h-[100px] p-3 rounded bg-gray-700 text-white text-base"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                      ></textarea>
-                    </div>
-
-                    <div id="turnstile-widget" className="flex justify-center mb-4 min-h-[40px] rounded"></div>
-
-                    <button
-                      type="submit"
-                      className="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition duration-300 text-lg"
-                      disabled={isSubmitted}
-                    >
-                      {isSubmitted ? "Sending..." : "Send Message"}
-                    </button>
-                  </form>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
+                    placeholder="your.email@example.com"
+                    required
+                  />
                 </div>
-              </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows="5"
+                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 resize-none"
+                    placeholder="Your message..."
+                    required
+                  />
+                </div>
+
+                {errorMessage && (
+                  <div className="text-red-400 text-sm bg-red-900/20 p-3 rounded-lg border border-red-500/30">
+                    {errorMessage}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitted}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                >
+                  {isSubmitted ? 'Sending...' : 'Send Message'}
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                Get In Touch
+              </h2>
+              <p className="text-gray-300 text-lg mb-8">
+                I'm currently available for freelance work and full-time opportunities. 
+                Let's discuss how we can work together!
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <a
+                href="mailto:magdalena.inalaf@gmail.com"
+                className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 group"
+              >
+                <div className="p-3 bg-blue-600 rounded-lg group-hover:bg-blue-700 transition-colors duration-300">
+                  <FaEnvelope className="text-white text-xl" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">Email</h3>
+                  <p className="text-gray-300">magdalena.inalaf@gmail.com</p>
+                </div>
+              </a>
+
+              <a
+                href="https://github.com/magdalena-inalaf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 group"
+              >
+                <div className="p-3 bg-gray-700 rounded-lg group-hover:bg-gray-600 transition-colors duration-300">
+                  <FaGithub className="text-white text-xl" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">GitHub</h3>
+                  <p className="text-gray-300">@magdalena-inalaf</p>
+                </div>
+              </a>
+
+              <a
+                href="https://linkedin.com/in/magdalena-inalaf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 group"
+              >
+                <div className="p-3 bg-blue-700 rounded-lg group-hover:bg-blue-600 transition-colors duration-300">
+                  <FaLinkedin className="text-white text-xl" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">LinkedIn</h3>
+                  <p className="text-gray-300">magdalena-inalaf</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Success Modal */}
       {showModal && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-          <div className="bg-gray-800 p-6 rounded-xl shadow-lg text-center w-full max-w-sm border-l-4 border-purple-500">
-            <FaCheckCircle className="text-green-400 text-5xl mx-auto mb-4" />
-            <p className="text-gray-300 text-lg">Your message has been sent successfully!</p>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-800 rounded-2xl p-8 max-w-md w-full text-center">
+            <div className="mb-4">
+              <FaCheckCircle className="text-green-500 text-5xl mx-auto" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
+            <p className="text-gray-300 mb-6">
+              Thank you for reaching out! I'll get back to you as soon as possible.
+            </p>
             <button
               onClick={() => setShowModal(false)}
-              className="w-full mt-4 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition duration-300 text-lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
             >
-              OK
+              Close
             </button>
           </div>
         </div>
