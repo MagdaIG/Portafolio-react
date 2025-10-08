@@ -8,19 +8,23 @@ import { SiNestjs, SiSpringboot, SiJquery, SiNextdotjs, SiPostgresql, SiIonic } 
 const skillsData = [
     { name: "HTML", icon: <FaHtml5 />, color: "#E34F26" },
     { name: "CSS", icon: <FaCss3Alt />, color: "#1572B6" },
-    { name: "Bootstrap", icon: <FaBootstrap />, color: "#7952B3" },
     { name: "JavaScript", icon: <FaJs />, color: "#F7DF1E" },
-    { name: "PHP", icon: <FaPhp />, color: "#777BB4" },
-    { name: "Laravel", icon: <FaLaravel />, color: "#FF2D20" },
-    { name: "Java", icon: <FaJava />, color: "#007396" },
     { name: "jQuery", icon: <SiJquery />, color: "#0769AD" },
-    { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791" },
-    { name: "NestJS", icon: <SiNestjs />, color: "#E0234E" },
-    { name: "Next.js", icon: <SiNextdotjs />, color: "#000000" },
-    { name: "Spring Boot", icon: <SiSpringboot />, color: "#6DB33F" },
-    { name: "Ionic", icon: <SiIonic />, color: "#3880FF" },
+    { name: "React", icon: <FaJs />, color: "#61DAFB" },
     { name: "Vue.js", icon: <FaVuejs />, color: "#4FC08D" },
+    { name: "Next.js", icon: <SiNextdotjs />, color: "#000000" },
+    { name: "Bootstrap", icon: <FaBootstrap />, color: "#7952B3" },
+    { name: "Laravel", icon: <FaLaravel />, color: "#FF2D20" },
+    { name: "NestJS", icon: <SiNestjs />, color: "#E0234E" },
+    { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791" },
+    { name: "Oracle", icon: <FaDatabase />, color: "#F80000" },
+    { name: "Git", icon: <FaGithub />, color: "#181717" },
     { name: "GitHub", icon: <FaGithub />, color: "#181717" },
+    { name: "Docker", icon: <FaGithub />, color: "#2496ED" },
+    { name: "Kubernetes", icon: <FaGithub />, color: "#326CE5" },
+    { name: "AWS", icon: <FaGithub />, color: "#FF9900" },
+    { name: "Jest", icon: <FaJs />, color: "#C21325" },
+    { name: "Cypress", icon: <FaJs />, color: "#17202C" },
     { name: "Figma", icon: <FaFigma />, color: "#F24E1E" },
 ];
 
@@ -46,11 +50,12 @@ const Skills = () => {
                     </h2>
 
                     <p className="text-lg text-gray-400 mb-16 text-center max-w-3xl mx-auto">
-                        Explore the tools and technologies I have worked with, from those I master to those I have explored.
-                        Some I have learned independently, driven by my curiosity and passion for development;
-                        others through academic training or as part of challenging projects.
-                        Each of these experiences has enriched my skills and helped me create functional and innovative projects.
-                        I am committed to continuous improvement and exploring new technologies to expand my impact and professional growth.
+                        Explore the comprehensive technical skills I've developed as a Software Developer.
+                        From frontend frameworks like React, Vue.js, and Next.js to backend technologies like Laravel and NestJS,
+                        I work with modern tools and methodologies. Experienced in CI/CD pipelines, Docker, Kubernetes,
+                        and cloud platforms like AWS. Strong foundation in testing with Jest and Cypress,
+                        and design principles with Figma. Committed to continuous learning and staying current with
+                        emerging technologies in the software development landscape.
                     </p>
 
                     <div className="grid grid-cols-4 gap-6">

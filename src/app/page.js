@@ -13,14 +13,14 @@ export default function Page() {
                         <div className="flex flex-col space-y-6 text-center lg:text-left">
                             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
                                 Hi! I&apos;m <span className="text-purple-500">Magdalena</span>,<br/>
-                                a <span className="text-gray-200">Software Developer</span> + <span className="text-purple-500">UX Designer</span>
+                                a <span className="text-gray-200">Software Developer</span> specialized in <span className="text-purple-500">React, Vue.js, Next.js & Node.js</span>
                             </h1>
 
                             {/* Botón de descarga del CV y redes sociales */}
                             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-                                <a href="/Magdalena-Inalaf-Frontend-Developer.pdf" target="_blank" rel="noopener noreferrer"
+                                <a href="/magdalena-inalaf-resume.pdf" target="_blank" rel="noopener noreferrer"
                                    className="bg-purple-600 text-white px-6 py-3 rounded-lg shadow-md transition hover:bg-purple-500 hover:shadow-lg text-sm md:text-base">
-                                    Download CV
+                                    Download Resume
                                 </a>
                                 <div className="flex space-x-6">
                                     <a href="https://github.com/magdaig" target="_blank" rel="noopener noreferrer"

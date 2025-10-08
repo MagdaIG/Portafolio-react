@@ -5,24 +5,39 @@ import Footer from './Footer';
 
 const educationData = [
     {
-        degree: "Diploma in Computer Programming and Systems Analysis",
-        institution: "Instituto Profesional San Sebastián",
-        date: "Graduation Expected: 2025"
+        degree: "Diploma in Programming and Systems Analysis",
+        institution: "Instituto Profesional San Sebastián – Santiago, Chile",
+        date: "2023 – 2025"
     },
     {
-        degree: "Additional Coursework in Education and Computing",
-        institution: "UMCE & UTEM",
-        date: "Various Years"
+        degree: "Fundamentals of Control and Management in Cybersecurity",
+        institution: "USACH, Chile",
+        date: "2025"
     },
     {
-        degree: "Frontend Bootcamp (Vue.js)",
-        institution: "Completed",
-        date: "Recent"
+        degree: "UX/UI Design with Figma",
+        institution: "SENCE, Chile",
+        date: "2025"
     },
     {
-        degree: "Full-Stack Next.js Course",
-        institution: "In Progress",
-        date: "Current"
+        degree: "Agile Methodologies: Scrum",
+        institution: "SENCE, Chile",
+        date: "2024"
+    },
+    {
+        degree: "Database Design and SQL Programming",
+        institution: "Instituto Profesional San Sebastián, Chile",
+        date: "2024"
+    },
+    {
+        degree: "Frontend Bootcamp – Vue.js",
+        institution: "SENCE / Talento Digital, Chile",
+        date: "2023"
+    },
+    {
+        degree: "Full-Stack Development with Next.js",
+        institution: "Udemy",
+        date: "2023"
     }
 ];
 
@@ -48,8 +63,9 @@ const Education = () => {
                     </h2>
 
                     <p className="text-lg text-gray-400 mb-12 text-center max-w-3xl mx-auto">
-                        My educational background reflects my passion for learning and expanding my knowledge
-                        in programming, systems analysis, and education.
+                        My educational journey combines formal academic training with continuous professional development.
+                        From my diploma in Programming and Systems Analysis to specialized courses in cybersecurity,
+                        UX/UI design, and agile methodologies, I'm committed to staying current with industry trends and technologies.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

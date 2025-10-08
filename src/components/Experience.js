@@ -5,23 +5,14 @@ import Footer from './Footer';
 
 const experienceData = [
     {
-        title: "Software Developer (Internship)",
-        company: "IVI SpA",
-        date: "Nov 2023 – Feb 2024",
+        title: "Software Developer",
+        company: "IVI SpA – Santiago, Chile",
+        date: "Nov 2023 – Present",
         description: [
-            "Developed an order and product unifier with Next.js.",
-            "Implemented Git & GitHub workflows.",
-            "Applied agile methodologies (Kanban)."
-        ]
-    },
-    {
-        title: "Software Developer (Short-term Internship)",
-        company: "ReImpact.cl",
-        date: "Jan 2024 – Feb 2024",
-        description: [
-            "Implemented E2E and unit tests.",
-            "Optimized policies and Eloquent-based features.",
-            "Used Git & GitHub for version control."
+            "Developed and deployed an order and product unifier using Next.js, improving data consistency and reducing manual processing by 25%.",
+            "Implemented CI/CD pipelines with GitHub Actions, cutting deployment time from 1h to 10min.",
+            "Introduced Docker for local development, ensuring environment consistency across the team.",
+            "Collaborated in a cross-functional agile team (Kanban), increasing delivery efficiency by 30%."
         ]
     }
 ];
@@ -35,7 +26,7 @@ const adminExperience = {
         "Handled government procurement and bidding.",
         "Developed and optimized proposals for government contracts."
     ],
-    resumeLink: "/Magdalena-Inalaf-Frontend-Developer.pdf"
+    resumeLink: "/magdalena-inalaf-resume.pdf"
 };
 
 const Experience = () => {
@@ -85,7 +76,7 @@ const Experience = () => {
                         <div className="flex justify-center mt-6">
                             <a href={adminExperience.resumeLink} target="_blank" rel="noopener noreferrer"
                                className="bg-purple-600 text-white px-6 py-3 rounded-lg shadow-md transition hover:bg-purple-500 hover:shadow-lg">
-                                View Resume
+                                Download Resume
                             </a>
                         </div>
                     </div>

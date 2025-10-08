@@ -6,6 +6,42 @@ import Footer from './Footer';
 
 const primaryProjects = [
     {
+        name: "PortafolioJS - Educational Portfolio",
+        description: "Educational portfolio documenting my JavaScript Bootcamp journey with detailed project breakdowns, technical solutions, and learning milestones. Features interactive demonstrations of complex projects like Kanban boards, e-commerce systems, and PostgreSQL database management.",
+        image: "/images/portafolio-js.png",
+        link: "https://magdaig.github.io/portafoliojs/"
+    },
+    {
+        name: "App Productos - Backend Management",
+        description: "Complete backend web application for product management built with Node.js and Express.js. Features data persistence with JSON files, file handling with Multer, dynamic routes, CRUD operations, and comprehensive error handling. Includes responsive frontend with form validation and real-time feedback. Demonstrates Node.js bootcamp skills in server-side development.",
+        image: "/images/gestor-productos.png",
+        link: "https://magdaig.github.io/portafoliojs/gestor-productos.html"
+    },
+    {
+        name: "Inventory System - PostgreSQL",
+        description: "Complete inventory management system built with PostgreSQL relational database. Features ERD design, normalization to 3NF, complex SQL queries with JOINs, triggers for automatic stock updates, and transaction management. Includes comprehensive database modeling with primary/foreign keys and data integrity constraints.",
+        image: "/images/gestor-inventario.png",
+        link: "https://magdaig.github.io/portafoliojs/bd-inventario.html"
+    },
+    {
+        name: "Task Management - Kanban Board",
+        description: "Complete task management system with Kanban board interface built with JavaScript and Supabase. Features drag & drop functionality, user authentication, real-time data synchronization, task CRUD operations, and responsive design. Includes dashboard with analytics and modern UI/UX.",
+        image: "/images/gestion-tareas.png",
+        link: "https://magdaig.github.io/Gestion-de-tareas-con-javascript/"
+    },
+    {
+        name: "Inventory System v2.0 - Enhanced",
+        description: "Advanced inventory management system v2.0 with PostgreSQL and PL/pgSQL. Features advanced validations, custom SQL functions, modular architecture, comprehensive documentation, Git submodules for version control, automated testing scripts, and professional database design. Includes triggers, stored procedures, and data integrity constraints.",
+        image: "/images/gestor-inventario-v2.png",
+        link: "https://magdaig.github.io/portafoliojs/bd-inventario-v2.html"
+    },
+    {
+        name: "Contact List - Contact Manager",
+        description: "Complete contact management system with modern UI/UX built with JavaScript. Features contact CRUD operations, search functionality, favorites system, birthday tracking, and responsive grid layout. Includes interactive contact cards with edit, delete, and favorite actions, plus advanced filtering and data persistence.",
+        image: "/images/gestor-contacto.png",
+        link: "https://magdaig.github.io/portafoliojs/gestor-contactos.html"
+    },
+    {
         name: "Course Manager",
         description: "A Course Management system built with Vue.js and API integration.",
         image: "/projects/course-manager.png",

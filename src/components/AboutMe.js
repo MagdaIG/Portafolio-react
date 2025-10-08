@@ -30,18 +30,15 @@ const AboutMe = () => {
 
                     <div className="md:ml-10 mt-6 md:mt-0 text-center md:text-left max-w-2xl">
                         <p className="text-lg text-gray-300 leading-relaxed">
-                            My journey reflects my passion for learning, teaching, and creating.
-                            I started in pedagogy, where I discovered my love for guiding others
-                            and sharing knowledge. These skills now enhance my teamwork and my
-                            ability to build collaborative solutions.
+                            Software developer specialized in building scalable, responsive, and interactive
+                            applications with React, Vue.js, and Next.js. Experienced in GitHub workflows,
+                            CI/CD pipelines, and agile methodologies.
                         </p>
                         <p className="text-lg text-gray-300 mt-4 leading-relaxed">
-                            Later, I returned to my roots in technology, combining my programming
-                            and system analysis training with the pedagogical tools I acquired.
-                            I hope to merge both worlds, contributing to the development of teams
-                            and projects with a human-centered, innovative, and strategic approach.
-                            Teaching is not just a passion; it's a way to amplify the impact of my
-                            work and create meaningful change.
+                            Strong collaboration, communication, and problem-solving skills, with proven
+                            adaptability and continuous learning mindset. Based in Vancouver, BC, Canada,
+                            I bring a unique perspective combining technical expertise with user-centered
+                            design principles to create meaningful digital solutions.
                         </p>
                     </div>
                 </div>
