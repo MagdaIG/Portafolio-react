@@ -1,127 +1,140 @@
-# Magdalena Inalaf - Portfolio
+# Magdalena Inalaf - Software Developer Portfolio
 
-A modern, responsive portfolio website built with Next.js, React, and Tailwind CSS, deployed on GitHub Pages.
+A modern, responsive portfolio website showcasing my expertise in React, Vue.js, Next.js, and Node.js development. Built with Next.js and deployed on GitHub Pages.
 
-## Features
+## About
 
-- 🎨 Modern and responsive design
-- 🌟 Interactive 3D elements with Three.js
-- 📱 Mobile-first approach
-- ⚡ Fast performance with Next.js
-- 🎯 SEO optimized
-- 📧 Contact form integration with Formspree
-- 🎭 Smooth animations with Framer Motion
-- 🚀 Automatic deployment with GitHub Actions
+I am a Software Developer specialized in building scalable, responsive, and interactive applications with React, Vue.js, and Next.js. Experienced in GitHub workflows, CI/CD pipelines, and agile methodologies. Based in Vancouver, BC, Canada, I bring a unique perspective combining technical expertise with user-centered design principles.
 
-## Quick Start
+## Professional Experience
 
-### 1. Clone and Install
-```bash
-git clone [your-repository-url]
-cd Portafolio-react
-npm install
-```
+**Software Developer** at IVI SpA (Nov 2023 – Present)
+- Developed and deployed an order and product unifier using Next.js, improving data consistency and reducing manual processing by 25%
+- Implemented CI/CD pipelines with GitHub Actions, cutting deployment time from 1h to 10min
+- Introduced Docker for local development, ensuring environment consistency across the team
+- Collaborated in a cross-functional agile team (Kanban), increasing delivery efficiency by 30%
 
-### 2. Development
-```bash
-npm run dev
-```
+## Technical Skills
 
-### 3. Build
-```bash
-npm run build
-```
+### Frontend Development
+- **React** - Component-based UI development
+- **Vue.js** - Progressive JavaScript framework
+- **Next.js** - Full-stack React framework
+- **HTML5, CSS3, JavaScript** - Core web technologies
+- **Tailwind CSS** - Utility-first CSS framework
+- **Bootstrap** - Responsive design framework
 
-## GitHub Pages Deployment
+### Backend Development
+- **Node.js** - Server-side JavaScript runtime
+- **Express.js** - Web application framework
+- **Laravel** - PHP web framework
+- **NestJS** - Progressive Node.js framework
 
-This portfolio is configured for automatic deployment to GitHub Pages using GitHub Actions.
+### Database Technologies
+- **PostgreSQL** - Relational database management
+- **Oracle** - Enterprise database systems
+- **SQL** - Database query language
+- **Database Design** - ERD modeling and normalization
 
-### Automatic Deployment
+### DevOps & Tools
+- **Git & GitHub** - Version control and collaboration
+- **Docker** - Containerization
+- **Kubernetes** - Container orchestration
+- **AWS** - Cloud computing services
+- **CI/CD Pipelines** - Continuous integration and deployment
 
-1. **Push your code to GitHub**
-2. **Enable GitHub Pages:**
-   - Go to your repository → Settings → Pages
-   - Source: "GitHub Actions"
-   - The workflow will automatically deploy on push to main/master
+### Testing & Quality Assurance
+- **Jest** - JavaScript testing framework
+- **Cypress** - End-to-end testing
+- **Testing methodologies** - Unit, integration, and E2E testing
 
-3. **Your site will be available at:**
-   ```
-   https://[your-username].github.io/[repository-name]
-   ```
+### Design & UX
+- **Figma** - UI/UX design and prototyping
+- **User-centered design** - Design thinking principles
+- **Responsive design** - Mobile-first approach
 
-### Manual Deployment (Alternative)
+## Featured Projects
 
-```bash
-./deploy-github-pages.sh
-```
+### 1. PortafolioJS - Educational Portfolio
+Educational portfolio documenting my JavaScript Bootcamp journey with detailed project breakdowns, technical solutions, and learning milestones. Features interactive demonstrations of complex projects like Kanban boards, e-commerce systems, and PostgreSQL database management.
 
-Then in GitHub:
-- Go to Settings → Pages
-- Source: "Deploy from a branch"
-- Branch: "gh-pages"
-- Folder: "/ (root)"
+### 2. App Productos - Backend Management
+Complete backend web application for product management built with Node.js and Express.js. Features data persistence with JSON files, file handling with Multer, dynamic routes, CRUD operations, and comprehensive error handling. Demonstrates Node.js bootcamp skills in server-side development.
 
-## Contact Form Setup
+### 3. Inventory System - PostgreSQL
+Complete inventory management system built with PostgreSQL relational database. Features ERD design, normalization to 3NF, complex SQL queries with JOINs, triggers for automatic stock updates, and transaction management.
 
-The contact form uses Formspree for static form handling:
+### 4. Task Management - Kanban Board
+Complete task management system with Kanban board interface built with JavaScript and Supabase. Features drag & drop functionality, user authentication, real-time data synchronization, task CRUD operations, and responsive design.
 
-1. **Sign up at [Formspree](https://formspree.io/)**
-2. **Create a new form**
-3. **Update the endpoint in `src/components/Contact.js`**
+### 5. Inventory System v2.0 - Enhanced
+Advanced inventory management system v2.0 with PostgreSQL and PL/pgSQL. Features advanced validations, custom SQL functions, modular architecture, comprehensive documentation, Git submodules for version control, and automated testing scripts.
 
-Current endpoint: `manbvygz`
+### 6. Contact List - Contact Manager
+Complete contact management system with modern UI/UX built with JavaScript. Features contact CRUD operations, search functionality, favorites system, birthday tracking, and responsive grid layout.
 
-## Project Structure
+## Education
 
-```
-src/
-├── app/                 # Next.js app directory
-│   ├── aboutme/        # About page
-│   ├── certifications/ # Certifications page
-│   ├── contact/        # Contact page
-│   ├── education/      # Education page
-│   ├── experience/     # Experience page
-│   ├── projects/       # Projects page
-│   ├── skills/         # Skills page
-│   └── layout.js       # Root layout
-├── components/         # React components
-└── styles/            # Global styles
-```
+- **Diploma in Programming and Systems Analysis** - Instituto Profesional San Sebastián (2023-2025)
+- **Fundamentals of Control and Management in Cybersecurity** - USACH (2025)
+- **UX/UI Design with Figma** - SENCE (2025)
+- **Agile Methodologies: Scrum** - SENCE (2024)
+- **Database Design and SQL Programming** - Instituto Profesional San Sebastián (2024)
+- **Frontend Bootcamp – Vue.js** - SENCE / Talento Digital (2023)
+- **Full-Stack Development with Next.js** - Udemy (2023)
+
+## Portfolio Features
+
+- Modern and responsive design with mobile-first approach
+- Interactive 3D elements with Three.js
+- Fast performance with Next.js optimization
+- SEO optimized for better visibility
+- Contact form integration with Formspree
+- Smooth animations with Framer Motion
+- Automatic deployment with GitHub Actions
 
 ## Technologies Used
 
 - **Next.js 15** - React framework with static export
 - **React 19** - UI library
-- **Tailwind CSS** - Styling
-- **Three.js** - 3D graphics
-- **Framer Motion** - Animations
-- **React Icons** - Icon library
+- **Tailwind CSS** - Utility-first styling
+- **Three.js** - 3D graphics and animations
+- **Framer Motion** - Animation library
+- **React Icons** - Comprehensive icon library
 - **Formspree** - Contact form handling
 
-## Development
+## Quick Start
 
+### Installation
 ```bash
-# Install dependencies
+git clone https://github.com/MagdaIG/Portafolio-react.git
+cd Portafolio-react
 npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Test workflow locally
-./test-workflow.sh
 ```
 
-## Deployment Files
+### Development
+```bash
+npm run dev
+```
 
-- `.github/workflows/deploy.yml` - GitHub Actions workflow
-- `deploy-github-pages.sh` - Manual deployment script
-- `test-workflow.sh` - Local workflow testing
-- `GITHUB_PAGES_SETUP.md` - Detailed setup guide
-- `GITHUB_DEPLOYMENT_CHECKLIST.md` - Deployment checklist
+### Production Build
+```bash
+npm run build
+```
+
+## Deployment
+
+This portfolio is configured for automatic deployment to GitHub Pages using GitHub Actions. The site is automatically deployed when changes are pushed to the main branch.
+
+**Live Site:** [https://magdaig.github.io/Portafolio-react/](https://magdaig.github.io/Portafolio-react/)
+
+## Contact
+
+- **Email:** Available through contact form
+- **LinkedIn:** [linkedin.com/in/minalaf](https://www.linkedin.com/in/minalaf/)
+- **GitHub:** [github.com/magdaig](https://github.com/magdaig)
+- **Portfolio:** [magdaig.github.io/Portafolio-react](https://magdaig.github.io/Portafolio-react/)
 
 ## License
 
-MIT License - feel free to use this template for your own portfolio!
+MIT License - This portfolio template is available for educational and personal use.
