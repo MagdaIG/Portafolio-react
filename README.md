@@ -1,3 +1,5 @@
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB) ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white) ![Tailwind](https://img.shields.io/badge/Tailwind-38B2AC?logo=tailwindcss&logoColor=white)
+
 # Magdalena Inalaf - Software Developer Portfolio
 
 A modern, responsive portfolio website showcasing my expertise in React, Vue.js, Next.js, and Node.js development. Built with Next.js and deployed on GitHub Pages.
